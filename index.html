@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Physics Forensics Virtual Lab - Laboratorium Virtual Momentum dan Impuls">
+  <meta name="author" content="Dame Simanjuntak">
+
+  <title>Physics Forensics Virtual Lab | Momentum & Impuls</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Utama -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       LOADING SCREEN
+  ====================================================== -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">⚛</div>
+      <h1>PHYSICS FORENSICS</h1>
+      <p>Initializing Virtual Laboratory...</p>
+
+      <div class="loading-bar">
+        <div id="loading-progress" class="loading-progress"></div>
+      </div>
+
+      <span id="loading-status">Preparing laboratory...</span>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       NOTIFICATION
+  ====================================================== -->
+  <div id="notification-container" class="notification-container" aria-live="polite"></div>
+
+
+  <!-- =====================================================
+       MAIN APPLICATION
+  ====================================================== -->
+  <main id="app" class="app hidden">
+
+    <!-- GLOBAL HEADER -->
+    <header class="main-header">
+
+      <div class="brand-area">
+        <div class="brand-symbol">⚛</div>
+
+        <div class="brand-text">
+          <span class="brand-subtitle">VIRTUAL LABORATORY</span>
+          <h1>PHYSICS FORENSICS</h1>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <span class="experiment-label">EXPERIMENT</span>
+        <strong>MOMENTUM &amp; IMPULSE</strong>
+      </div>
+
+      <div class="header-actions">
+        <button
+          id="sound-toggle"
+          class="icon-button"
+          type="button"
+          aria-label="Aktifkan atau nonaktifkan suara"
+          title="Sound">
+          🔊
+        </button>
+
+        <button
+          id="help-button"
+          class="icon-button"
+          type="button"
+          aria-label="Bantuan"
+          title="Help">
+          ?
+        </button>
+      </div>
+
+    </header>
+
+
+    <!-- PROGRESS NAVIGATION -->
+    <nav class="progress-navigation" aria-label="Navigasi eksperimen">
+
+      <div class="progress-track">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+
+      <div class="progress-steps">
+
+        <button class="progress-step active" data-scene="1" type="button">
+          <span class="step-number">01</span>
+          <span class="step-name">INTRO</span>
+        </button>
+
+        <button class="progress-step" data-scene="2" type="button">
+          <span class="step-number">02</span>
+          <span class="step-name">MISSION</span>
+        </button>
+
+        <button class="progress-step" data-scene="3" type="button">
+          <span class="step-number">03</span>
+          <span class="step-name">CASE</span>
+        </button>
+
+        <button class="progress-step" data-scene="4" type="button">
+          <span class="step-number">04</span>
+          <span class="step-name">TOOLBOX</span>
+        </button>
+
+        <button class="progress-step" data-scene="5" type="button">
+          <span class="step-number">05</span>
+          <span class="step-name">SIMULATION</span>
+        </button>
+
+        <button class="progress-step" data-scene="6" type="button">
+          <span class="step-number">06</span>
+          <span class="step-name">REPORT</span>
+        </button>
+
+      </div>
+    </nav>
+
+
+    <!-- =================================================
+         SCENE 01 — COVER
+    ================================================== -->
+    <section id="scene-1" class="scene scene-cover active-scene" data-scene="1">
+
+      <div class="scene-background-grid"></div>
+      <div class="floating-particle particle-one"></div>
+      <div class="floating-particle particle-two"></div>
+      <div class="floating-particle particle-three"></div>
+
+      <div class="cover-content">
+
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          SYSTEM ONLINE
+        </div>
+
+        <h2 class="cover-title">
+          PHYSICS<br>
+          <span>FORENSICS</span>
+        </h2>
+
+        <p class="cover-description">
+          Ungkap rahasia gerak, tumbukan, momentum, dan impuls
+          melalui eksperimen virtual interaktif.
+        </p>
+
+        <div class="cover-equation">
+          <span>p = mv</span>
+          <span>J = Δp</span>
+          <span>Σp = konstan</span>
+        </div>
+
+        <button id="start-lab-button" class="primary-button" type="button">
+          <span>START INVESTIGATION</span>
+          <span class="button-arrow">→</span>
+        </button>
+
+        <p class="cover-footer">
+          Interactive Physics Laboratory • Grade XI
+        </p>
+
+      </div>
+
+      <div class="cover-visual">
+
+        <div class="orbit orbit-large"></div>
+        <div class="orbit orbit-small"></div>
+
+        <div class="atom-core">⚛</div>
+
+        <div class="cover-object object-car">
+          <img src="assets/mobil.png" alt="Mobil eksperimen momentum">
+        </div>
+
+        <div class="cover-object object-ball">
+          <img src="assets/bola.png" alt="Bola eksperimen impuls">
+        </div>
+
+        <div class="cover-object object-truck">
+          <img src="assets/truk.png" alt="Truk eksperimen momentum">
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENE 02 — MISSION
+    ================================================== -->
+    <section id="scene-2" class="scene scene-mission" data-scene="2">
+
+      <div class="scene-heading">
+        <span class="scene-number">02 / MISSION</span>
+        <h2>Your Mission Begins</h2>
+        <p>
+          Jadilah investigator fisika dan temukan bukti melalui eksperimen.
+        </p>
+      </div>
+
+      <div class="mission-layout">
+
+        <div class="mission-introduction glass-panel">
+
+          <div class="panel-tag">MISSION BRIEFING</div>
+
+          <h3>Selamat datang, Investigator!</h3>
+
+          <p>
+            Sebuah sistem mengalami peristiwa tumbukan.
+            Tugasmu adalah menyelidiki bagaimana massa, kecepatan,
+            momentum, dan impuls saling berhubungan.
+          </p>
+
+          <p>
+            Gunakan simulasi untuk mengumpulkan data yang dapat
+            digunakan sebagai bukti ilmiah.
+          </p>
+
+          <div class="mission-warning">
+            <span>⚠</span>
+            <p>
+              Jangan hanya menebak. Setiap kesimpulan harus
+              didukung oleh data eksperimen.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="mission-objectives">
+
+          <div class="panel-tag">INVESTIGATION OBJECTIVES</div>
+
+          <article class="objective-card">
+            <div class="objective-icon">01</div>
+            <div>
+              <h3>Analyze Momentum</h3>
+              <p>Menganalisis pengaruh massa dan kecepatan terhadap momentum.</p>
+            </div>
+          </article>
+
+          <article class="objective-card">
+            <div class="objective-icon">02</div>
+            <div>
+              <h3>Investigate Impulse</h3>
+              <p>Menyelidiki hubungan antara gaya, waktu kontak, dan perubahan momentum.</p>
+            </div>
+          </article>
+
+          <article class="objective-card">
+            <div class="objective-icon">03</div>
+            <div>
+              <h3>Study Collisions</h3>
+              <p>Menganalisis peristiwa tumbukan dan hukum kekekalan momentum.</p>
+            </div>
+          </article>
+
+          <article class="objective-card">
+            <div class="objective-icon">04</div>
+            <div>
+              <h3>Build Arguments</h3>
+              <p>Menyusun kesimpulan berdasarkan data dan bukti ilmiah.</p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+      <div class="scene-navigation">
+        <button class="secondary-button prev-scene-button" data-prev="1" type="button">
+          ← BACK
+        </button>
+
+        <button class="primary-button next-scene-button" data-next="3" type="button">
+          CONTINUE →
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENE 03 — PHYSICS CASE
+    ================================================== -->
+    <section id="scene-3" class="scene scene-case" data-scene="3">
+
+      <div class="scene-heading">
+        <span class="scene-number">03 / PHYSICS CASE</span>
+        <h2>The Collision Case</h2>
+        <p>Pelajari konsep sebelum memasuki ruang simulasi.</p>
+      </div>
+
+      <div class="case-layout">
+
+        <div class="case-visual glass-panel">
+
+          <div class="panel-tag">CASE VISUALIZATION</div>
+
+          <div class="case-track">
+            <div class="case-track-line"></div>
+
+            <div class="case-vehicle case-vehicle-one">
+              <img src="assets/mobil.png" alt="Mobil bergerak">
+              <span>OBJECT A</span>
+            </div>
+
+            <div class="case-impact-symbol">✦</div>
+
+            <div class="case-vehicle case-vehicle-two">
+              <img src="assets/truk.png" alt="Truk bergerak">
+              <span>OBJECT B</span>
+            </div>
+
+            <img
+              class="case-wall"
+              src="assets/tembok.png"
+              alt="Tembok pembatas eksperimen">
+          </div>
+
+          <p class="case-caption">
+            Dua objek dapat berinteraksi melalui tumbukan
+            atau menumbuk sebuah dinding.
+          </p>
+
+        </div>
+
+
+        <div class="concept-cards">
+
+          <article class="concept-card glass-panel">
+            <span class="concept-label">CONCEPT 01</span>
+            <h3>Momentum</h3>
+            <div class="concept-formula">p = mv</div>
+            <p>
+              Momentum merupakan hasil kali massa benda
+              dengan kecepatannya.
+            </p>
+          </article>
+
+          <article class="concept-card glass-panel">
+            <span class="concept-label">CONCEPT 02</span>
+            <h3>Impulse</h3>
+            <div class="concept-formula">J = Δp</div>
+            <p>
+              Impuls adalah perubahan momentum akibat gaya
+              yang bekerja selama selang waktu tertentu.
+            </p>
+          </article>
+
+          <article class="concept-card glass-panel">
+            <span class="concept-label">CONCEPT 03</span>
+            <h3>Conservation</h3>
+            <div class="concept-formula">Σpᵢ = Σp𝒇</div>
+            <p>
+              Pada sistem terisolasi, jumlah momentum total
+              sebelum dan sesudah tumbukan tetap.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+      <div class="scene-navigation">
+        <button class="secondary-button prev-scene-button" data-prev="2" type="button">
+          ← BACK
+        </button>
+
+        <button class="primary-button next-scene-button" data-next="4" type="button">
+          CONTINUE →
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENE 04 — TOOLBOX
+    ================================================== -->
+    <section id="scene-4" class="scene scene-toolbox" data-scene="4">
+
+      <div class="scene-heading">
+        <span class="scene-number">04 / TOOLBOX</span>
+        <h2>Investigator's Toolbox</h2>
+        <p>Kenali peralatan yang akan kamu gunakan.</p>
+      </div>
+
+      <div class="toolbox-layout">
+
+        <div class="toolbox-items">
+
+          <article class="tool-card glass-panel">
+            <div class="tool-image">
+              <img src="assets/mobil.png" alt="Mobil">
+            </div>
+            <div class="tool-information">
+              <span class="tool-code">OBJ-A</span>
+              <h3>Car</h3>
+              <p>Objek dinamis untuk menguji momentum dan tumbukan.</p>
+              <button class="tool-select-button" data-tool="car" type="button">
+                SELECT OBJECT
+              </button>
+            </div>
+          </article>
+
+          <article class="tool-card glass-panel">
+            <div class="tool-image">
+              <img src="assets/truk.png" alt="Truk">
+            </div>
+            <div class="tool-information">
+              <span class="tool-code">OBJ-B</span>
+              <h3>Truck</h3>
+              <p>Objek bermassa besar untuk membandingkan momentum.</p>
+              <button class="tool-select-button" data-tool="truck" type="button">
+                SELECT OBJECT
+              </button>
+            </div>
+          </article>
+
+          <article class="tool-card glass-panel">
+            <div class="tool-image">
+              <img src="assets/bola.png" alt="Bola">
+            </div>
+            <div class="tool-information">
+              <span class="tool-code">OBJ-C</span>
+              <h3>Ball</h3>
+              <p>Objek ringan untuk mengamati perubahan kecepatan.</p>
+              <button class="tool-select-button" data-tool="ball" type="button">
+                SELECT OBJECT
+              </button>
+            </div>
+          </article>
+
+          <article class="tool-card glass-panel">
+            <div class="tool-image">
+              <img src="assets/tembok.png" alt="Tembok">
+            </div>
+            <div class="tool-information">
+              <span class="tool-code">ENV-A</span>
+              <h3>Wall</h3>
+              <p>Pembatas untuk menyelidiki tumbukan dengan dinding.</p>
+              <button class="tool-select-button" data-tool="wall" type="button">
+                SELECT OBJECT
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+
+        <aside class="toolbox-guide glass-panel">
+
+          <div class="panel-tag">LABORATORY PROTOCOL</div>
+
+          <h3>Before You Begin</h3>
+
+          <ol class="protocol-list">
+            <li>Pilih objek yang akan digunakan.</li>
+            <li>Atur massa dan kecepatan objek.</li>
+            <li>Tempatkan objek pada arena simulasi.</li>
+            <li>Jalankan eksperimen.</li>
+            <li>Catat dan analisis data yang diperoleh.</li>
+          </ol>
+
+          <div class="protocol-note">
+            <span>ⓘ</span>
+            <p>
+              Kamu dapat mengulang eksperimen dengan
+              parameter yang berbeda.
+            </p>
+          </div>
+
+        </aside>
+
+      </div>
+
+      <div class="scene-navigation">
+        <button class="secondary-button prev-scene-button" data-prev="3" type="button">
+          ← BACK
+        </button>
+
+        <button class="primary-button next-scene-button" data-next="5" type="button">
+          ENTER SIMULATION →
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENE 05 — SIMULATION LAB
+    ================================================== -->
+    <section id="scene-5" class="scene scene-simulation" data-scene="5">
+
+      <div class="scene-heading simulation-heading">
+        <div>
+          <span class="scene-number">05 / SIMULATION LAB</span>
+          <h2>Experimental Sandbox</h2>
+          <p>Atur objek, jalankan simulasi, dan kumpulkan bukti.</p>
+        </div>
+
+        <div class="simulation-status">
+          <span id="simulation-status-dot" class="status-dot"></span>
+          <span id="simulation-status-text">READY</span>
+        </div>
+      </div>
+
+
+      <div class="simulation-mode-selector glass-panel">
+
+        <div class="mode-description">
+          <span class="panel-tag">EXPERIMENT MODE</span>
+          <h3 id="mode-title">Guided Investigation</h3>
+          <p id="mode-description">
+            Ikuti tantangan eksperimen yang tersedia.
+          </p>
+        </div>
+
+        <div class="mode-buttons">
+          <button
+            id="guided-mode-button"
+            class="mode-button active"
+            data-mode="guided"
+            type="button">
+            GUIDED MODE
+          </button>
+
+          <button
+            id="free-mode-button"
+            class="mode-button"
+            data-mode="free"
+            type="button">
+            FREE SANDBOX
+          </button>
+        </div>
+
+      </div>
+
+
+      <div class="simulation-grid">
+
+        <!-- LEFT SIDEBAR: TOOLBOX -->
+        <aside class="simulation-sidebar left-sidebar">
+
+          <div class="sidebar-header">
+            <span class="panel-tag">OBJECT TOOLBOX</span>
+            <h3>Objects</h3>
+          </div>
+
+          <div class="simulation-object-list">
+
+            <button
+              class="simulation-object-card"
+              data-object-type="car"
+              type="button">
+              <img src="assets/mobil.png" alt="Mobil">
+              <span>
+                <strong>Car</strong>
+                <small>Dynamic object</small>
+              </span>
+              <span class="add-object-icon">+</span>
+            </button>
+
+            <button
+              class="simulation-object-card"
+              data-object-type="truck"
+              type="button">
+              <img src="assets/truk.png" alt="Truk">
+              <span>
+                <strong>Truck</strong>
+                <small>Dynamic object</small>
+              </span>
+              <span class="add-object-icon">+</span>
+            </button>
+
+            <button
+              class="simulation-object-card"
+              data-object-type="ball"
+              type="button">
+              <img src="assets/bola.png" alt="Bola">
+              <span>
+                <strong>Ball</strong>
+                <small>Dynamic object</small>
+              </span>
+              <span class="add-object-icon">+</span>
+            </button>
+
+            <button
+              class="simulation-object-card"
+              data-object-type="wall"
+              type="button">
+              <img src="assets/tembok.png" alt="Tembok">
+              <span>
+                <strong>Wall</strong>
+                <small>Static object</small>
+              </span>
+              <span class="add-object-icon">+</span>
+            </button>
+
+          </div>
+
+
+          <div class="sidebar-divider"></div>
+
+          <div class="challenge-panel">
+
+            <span class="panel-tag">CURRENT CHALLENGE</span>
+
+            <h3 id="challenge-title">Mass vs Momentum</h3>
+
+            <p id="challenge-description">
+              Selidiki pengaruh massa terhadap momentum
+              ketika kecepatan tetap.
+            </p>
+
+            <div class="challenge-progress">
+              <span id="challenge-counter">CHALLENGE 1 / 4</span>
+              <div class="challenge-progress-bar">
+                <div id="challenge-progress-fill"></div>
+              </div>
+            </div>
+
+            <button id="next-challenge-button" class="small-button" type="button">
+              NEXT CHALLENGE →
+            </button>
+
+          </div>
+
+        </aside>
+
+
+        <!-- CENTER: SIMULATION ARENA -->
+        <section class="simulation-center">
+
+          <div class="arena-header glass-panel">
+
+            <div>
+              <span class="panel-tag">PHYSICS ARENA</span>
+              <h3>Experimental Track</h3>
+            </div>
+
+            <div class="arena-tools">
+              <button id="grid-toggle" class="small-icon-button" type="button" title="Tampilkan grid">
+                ⊞
+              </button>
+
+              <button id="vector-toggle" class="small-icon-button" type="button" title="Tampilkan vektor">
+                ⇢
+              </button>
+
+              <button id="reset-arena-button" class="small-icon-button" type="button" title="Reset arena">
+                ↻
+              </button>
+            </div>
+
+          </div>
+
+
+          <div id="arena-wrapper" class="arena-wrapper">
+
+            <canvas
+              id="simulation-canvas"
+              width="1100"
+              height="500"
+              aria-label="Arena simulasi fisika interaktif">
+              Browser kamu tidak mendukung Canvas.
+            </canvas>
+
+            <div class="arena-overlay arena-overlay-top">
+              <span id="arena-coordinate-display">X: 0.00 m</span>
+              <span id="arena-time-display">TIME: 0.00 s</span>
+            </div>
+
+            <div id="arena-empty-state" class="arena-empty-state">
+              <span class="empty-state-icon">＋</span>
+              <h3>ARENA READY</h3>
+              <p>Pilih objek dari toolbox untuk memulai eksperimen.</p>
+            </div>
+
+            <div id="collision-indicator" class="collision-indicator hidden">
+              <span>⚡ COLLISION DETECTED</span>
+            </div>
+
+          </div>
+
+
+          <!-- SIMULATION CONTROLS -->
+          <div class="simulation-controls glass-panel">
+
+            <div class="control-group-main">
+
+              <button id="run-simulation-button" class="run-button" type="button">
+                <span id="run-button-icon">▶</span>
+                <span id="run-button-text">RUN EXPERIMENT</span>
+              </button>
+
+              <button id="pause-simulation-button" class="control-button" type="button" disabled>
+                ❚❚ PAUSE
+              </button>
+
+              <button id="step-simulation-button" class="control-button" type="button">
+                ⏭ STEP
+              </button>
+
+              <button id="stop-simulation-button" class="control-button" type="button">
+                ■ STOP
+              </button>
+
+            </div>
+
+            <div class="control-group-secondary">
+
+              <label for="simulation-speed">
+                SPEED
+                <select id="simulation-speed">
+                  <option value="0.5">0.5×</option>
+                  <option value="1" selected>1×</option>
+                  <option value="2">2×</option>
+                  <option value="4">4×</option>
+                </select>
+              </label>
+
+              <button id="clear-arena-button" class="text-button" type="button">
+                Clear Arena
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- LIVE PHYSICS DATA -->
+          <div class="live-data-panel glass-panel">
+
+            <div class="panel-heading-row">
+              <div>
+                <span class="panel-tag">LIVE MEASUREMENTS</span>
+                <h3>Real-Time Data</h3>
+              </div>
+
+              <span class="live-indicator">
+                <span class="status-dot"></span>
+                LIVE
+              </span>
+            </div>
+
+            <div class="live-data-grid">
+
+              <div class="measurement-card">
+                <span>Total Momentum</span>
+                <strong id="live-total-momentum">0.00</strong>
+                <small>kg·m/s</small>
+              </div>
+
+              <div class="measurement-card">
+                <span>Total Kinetic Energy</span>
+                <strong id="live-total-energy">0.00</strong>
+                <small>J</small>
+              </div>
+
+              <div class="measurement-card">
+                <span>System Impulse</span>
+                <strong id="live-system-impulse">0.00</strong>
+                <small>N·s</small>
+              </div>
+
+              <div class="measurement-card">
+                <span>Simulation Time</span>
+                <strong id="live-simulation-time">0.00</strong>
+                <small>s</small>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDEBAR: INSPECTOR -->
+        <aside class="simulation-sidebar right-sidebar">
+
+          <div class="sidebar-header">
+            <span class="panel-tag">INSPECTOR</span>
+            <h3>Object Properties</h3>
+          </div>
+
+          <div id="inspector-empty" class="inspector-empty">
+            <span>◎</span>
+            <p>Pilih objek pada arena untuk mengatur parameternya.</p>
+          </div>
+
+          <div id="object-inspector" class="object-inspector hidden">
+
+            <div class="selected-object-preview">
+              <img id="inspector-object-image" src="assets/mobil.png" alt="Objek terpilih">
+              <div>
+                <span class="panel-tag">SELECTED OBJECT</span>
+                <h3 id="inspector-object-name">Car</h3>
+                <span id="inspector-object-id">OBJECT-01</span>
+              </div>
+            </div>
+
+            <div class="inspector-fields">
+
+              <div class="field-group">
+                <label for="object-mass">Mass (kg)</label>
+                <input
+                  id="object-mass"
+                  type="number"
+                  min="0.01"
+                  step="0.1"
+                  value="1">
+              </div>
+
+              <div class="field-group">
+                <label for="object-position">Position (m)</label>
+                <input
+                  id="object-position"
+                  type="number"
+                  step="0.1"
+                  value="2">
+              </div>
+
+              <div class="field-group">
+                <label for="object-velocity">Velocity (m/s)</label>
+                <input
+                  id="object-velocity"
+                  type="number"
+                  step="0.1"
+                  value="2">
+              </div>
+
+              <div class="field-group">
+                <label for="object-direction">Direction</label>
+                <select id="object-direction">
+                  <option value="1">Right →</option>
+                  <option value="-1">Left ←</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="object-restitution">Restitution (e)</label>
+                <input
+                  id="object-restitution"
+                  type="number"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value="1">
+              </div>
+
+            </div>
+
+            <div class="inspector-actions">
+              <button id="apply-object-properties" class="primary-button small" type="button">
+                APPLY CHANGES
+              </button>
+
+              <button id="delete-selected-object" class="danger-button" type="button">
+                DELETE OBJECT
+              </button>
+            </div>
+
+          </div>
+
+
+          <div class="sidebar-divider"></div>
+
+
+          <!-- COLLISION SETTINGS -->
+          <div class="collision-settings">
+
+            <div class="sidebar-header">
+              <span class="panel-tag">COLLISION MODEL</span>
+              <h3>Interaction</h3>
+            </div>
+
+            <label class="field-group" for="collision-type">
+              <span>Collision Type</span>
+              <select id="collision-type">
+                <option value="elastic">Elastic</option>
+                <option value="inelastic">Inelastic</option>
+                <option value="perfectly-inelastic">Perfectly Inelastic</option>
+              </select>
+            </label>
+
+            <label class="switch-field">
+              <input id="wall-collision-toggle" type="checkbox" checked>
+              <span class="switch-slider"></span>
+              <span>Enable wall collision</span>
+            </label>
+
+          </div>
+
+
+          <div class="sidebar-divider"></div>
+
+
+          <!-- SELECTED OBJECT DATA -->
+          <div class="selected-object-data">
+
+            <span class="panel-tag">OBJECT DATA</span>
+
+            <div class="mini-data-row">
+              <span>Momentum</span>
+              <strong id="selected-object-momentum">0.00 kg·m/s</strong>
+            </div>
+
+            <div class="mini-data-row">
+              <span>Kinetic Energy</span>
+              <strong id="selected-object-energy">0.00 J</strong>
+            </div>
+
+            <div class="mini-data-row">
+              <span>Current Velocity</span>
+              <strong id="selected-object-current-velocity">0.00 m/s</strong>
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <!-- TRIAL ACTIONS -->
+      <div class="trial-actions glass-panel">
+
+        <div>
+          <span class="panel-tag">EXPERIMENT RECORD</span>
+          <h3>Save Your Evidence</h3>
+          <p>Simpan hasil eksperimen untuk dianalisis pada bagian laporan.</p>
+        </div>
+
+        <div class="trial-action-buttons">
+          <button id="save-trial-button" class="primary-button" type="button">
+            SAVE TRIAL
+          </button>
+
+          <button id="reset-experiment-button" class="secondary-button" type="button">
+            RESET EXPERIMENT
+          </button>
+        </div>
+
+      </div>
+
+
+      <div class="scene-navigation">
+        <button class="secondary-button prev-scene-button" data-prev="4" type="button">
+          ← BACK
+        </button>
+
+        <button class="primary-button next-scene-button" data-next="6" type="button">
+          VIEW REPORT →
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCENE 06 — DATA REPORT
+    ================================================== -->
+    <section id="scene-6" class="scene scene-report" data-scene="6">
+
+      <div class="scene-heading">
+        <span class="scene-number">06 / DATA REPORT</span>
+        <h2>Evidence &amp; Analysis</h2>
+        <p>Tinjau data eksperimen dan temukan pola fisika.</p>
+      </div>
+
+
+      <div class="report-summary-grid">
+
+        <div class="report-summary-card glass-panel">
+          <span>Total Trials</span>
+          <strong id="report-total-trials">0</strong>
+          <small>Eksperimen tersimpan</small>
+        </div>
+
+        <div class="report-summary-card glass-panel">
+          <span>Momentum Before</span>
+          <strong id="report-momentum-before">0.00</strong>
+          <small>kg·m/s</small>
+        </div>
+
+        <div class="report-summary-card glass-panel">
+          <span>Momentum After</span>
+          <strong id="report-momentum-after">0.00</strong>
+          <small>kg·m/s</small>
+        </div>
+
+        <div class="report-summary-card glass-panel">
+          <span>Momentum Difference</span>
+          <strong id="report-momentum-difference">0.00</strong>
+          <small>kg·m/s</small>
+        </div>
+
+      </div>
+
+
+      <div class="report-layout">
+
+        <!-- TRIAL TABLE -->
+        <section class="report-trials glass-panel">
+
+          <div class="panel-heading-row">
+            <div>
+              <span class="panel-tag">TRIAL HISTORY</span>
+              <h3>Experiment Records</h3>
+            </div>
+
+            <div class="table-actions">
+              <button id="export-csv-button" class="small-button" type="button">
+                EXPORT CSV
+              </button>
+
+              <button id="clear-trials-button" class="small-button danger" type="button">
+                CLEAR
+              </button>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+
+            <table id="trial-table">
+              <thead>
+                <tr>
+                  <th>Trial</th>
+                  <th>Mode</th>
+                  <th>Collision</th>
+                  <th>p Before</th>
+                  <th>p After</th>
+                  <th>Δp</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="trial-table-body">
+                <tr id="empty-trials-row">
+                  <td colspan="7">
+                    Belum ada data eksperimen.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+        </section>
+
+
+        <!-- ANALYSIS PANEL -->
+        <aside class="report-analysis glass-panel">
+
+          <span class="panel-tag">DATA INTERPRETATION</span>
+          <h3>Analysis Notes</h3>
+
+          <div id="analysis-empty-state" class="analysis-empty-state">
+            <span>⌁</span>
+            <p>
+              Simpan eksperimen untuk melihat analisis data.
+            </p>
+          </div>
+
+          <div id="analysis-content" class="analysis-content hidden">
+
+            <div class="analysis-item">
+              <span>Momentum Conservation</span>
+              <strong id="analysis-momentum-status">Not analyzed</strong>
+            </div>
+
+            <div class="analysis-item">
+              <span>Momentum Difference</span>
+              <strong id="analysis-difference-value">0.00 kg·m/s</strong>
+            </div>
+
+            <div class="analysis-item">
+              <span>Collision Classification</span>
+              <strong id="analysis-collision-status">Not analyzed</strong>
+            </div>
+
+            <div class="analysis-item">
+              <span>Energy Change</span>
+              <strong id="analysis-energy-change">0.00 J</strong>
+            </div>
+
+            <div class="analysis-conclusion">
+              <span class="panel-tag">SYSTEM INTERPRETATION</span>
+              <p id="analysis-conclusion-text">
+                Belum tersedia kesimpulan.
+              </p>
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <!-- CHART -->
+      <section class="report-chart glass-panel">
+
+        <div class="panel-heading-row">
+          <div>
+            <span class="panel-tag">VISUAL DATA</span>
+            <h3>Momentum Comparison</h3>
+          </div>
+
+          <select id="chart-data-selector">
+            <option value="momentum">Momentum</option>
+            <option value="energy">Kinetic Energy</option>
+            <option value="impulse">Impulse</option>
+          </select>
+        </div>
+
+        <div class="chart-container">
+          <canvas
+            id="report-chart"
+            width="1100"
+            height="350"
+            aria-label="Grafik perbandingan data eksperimen">
+            Browser kamu tidak mendukung Canvas.
+          </canvas>
+
+          <div id="chart-empty-state" class="chart-empty-state">
+            Belum ada data untuk ditampilkan.
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- REPORT NAVIGATION -->
+      <div class="scene-navigation">
+
+        <button class="secondary-button prev-scene-button" data-prev="5" type="button">
+          ← BACK TO LAB
+        </button>
+
+        <button id="restart-lab-button" class="primary-button" type="button">
+          RESTART INVESTIGATION ↻
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       HELP MODAL
+  ====================================================== -->
+  <div id="help-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="help-modal-title">
+
+    <div class="modal-backdrop" data-close-modal="help-modal"></div>
+
+    <div class="modal-content glass-panel">
+
+      <button
+        class="modal-close-button"
+        data-close-modal="help-modal"
+        type="button"
+        aria-label="Tutup bantuan">
+        ×
+      </button>
+
+      <span class="panel-tag">HELP CENTER</span>
+      <h2 id="help-modal-title">How to Use the Lab</h2>
+
+      <div class="help-list">
+        <p><strong>1.</strong> Pilih objek dari toolbox.</p>
+        <p><strong>2.</strong> Klik objek pada arena untuk mengatur parameternya.</p>
+        <p><strong>3.</strong> Atur massa, posisi, dan kecepatan.</p>
+        <p><strong>4.</strong> Jalankan eksperimen menggunakan tombol Run.</p>
+        <p><strong>5.</strong> Simpan hasil eksperimen ke dalam laporan.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       CONFIRMATION MODAL
+  ====================================================== -->
+  <div id="confirmation-modal" class="modal hidden" role="dialog" aria-modal="true">
+
+    <div class="modal-backdrop" data-close-modal="confirmation-modal"></div>
+
+    <div class="modal-content glass-panel">
+
+      <span class="panel-tag">CONFIRM ACTION</span>
+      <h2 id="confirmation-title">Konfirmasi</h2>
+      <p id="confirmation-message">Apakah kamu yakin?</p>
+
+      <div class="modal-actions">
+        <button id="cancel-confirmation-button" class="secondary-button" type="button">
+          CANCEL
+        </button>
+
+        <button id="confirm-action-button" class="danger-button" type="button">
+          CONFIRM
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT UTAMA
+  ====================================================== -->
+  <script src="script.js" defer></script>
+
+</body>
+</html>
